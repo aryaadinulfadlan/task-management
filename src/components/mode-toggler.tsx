@@ -1,36 +1,44 @@
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { useTheme } from "./use-theme";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 export function ModeToggler() {
   const { setTheme } = useTheme();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <HoverCard openDelay={100} closeDelay={200}>
+      <HoverCardTrigger asChild>
         <Button variant="outline" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
           <span className="sr-only">Toggle theme</span>
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+      </HoverCardTrigger>
+      <HoverCardContent
+        className="w-30 p-0 rounded-sm grid"
+        align="end"
+        side="bottom"
+      >
+        <div
+          className="hover:bg-accent p-2 text-sm lg:text-base"
+          onClick={() => setTheme("light")}
+        >
           Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        </div>
+        <div
+          className="hover:bg-accent p-2 text-sm lg:text-base"
+          onClick={() => setTheme("dark")}
+        >
           Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        </div>
+        <div
+          className="hover:bg-accent p-2 text-sm lg:text-base"
+          onClick={() => setTheme("system")}
+        >
           System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
   );
 }
