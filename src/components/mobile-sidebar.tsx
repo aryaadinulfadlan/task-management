@@ -14,7 +14,6 @@ export default function MobileSidebar() {
   useEffect(() => {
     onClose();
   }, [pathname, onClose]);
-  console.log({ pathname });
   return (
     <>
       <Button

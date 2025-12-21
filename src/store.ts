@@ -81,3 +81,50 @@ export const useUserSession = create<UserSession>()(
     }
   )
 );
+
+export interface Task {
+  task_id: string;
+  title: string;
+  description: string;
+  is_completed: boolean;
+}
+export interface TaskData {
+  tasks: Task[];
+  addTask: (task: Omit<Task, "is_completed">) => void;
+  completeTask: (task_id: string) => void;
+  deleteTask: (task_id: string) => void;
+}
+export const useTaskData = create<TaskData>()(
+  persist(
+    (set) => ({
+      tasks: [],
+      addTask: ({ task_id, title, description }) =>
+        set((state) => ({
+          ...state,
+          tasks: [
+            ...state.tasks,
+            { task_id, title, description, is_completed: false },
+          ],
+        })),
+      completeTask: (task_id: string) =>
+        set((state) => ({
+          ...state,
+          tasks: state.tasks.map((el) => {
+            if (el.task_id === task_id) {
+              const newEl: Task = { ...el, is_completed: !el.is_completed };
+              return newEl;
+            }
+            return el;
+          }),
+        })),
+      deleteTask: (task_id: string) =>
+        set((state) => ({
+          ...state,
+          tasks: state.tasks.filter((el) => el.task_id !== task_id),
+        })),
+    }),
+    {
+      name: "user-tasks",
+    }
+  )
+);

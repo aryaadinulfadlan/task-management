@@ -26,3 +26,14 @@ export const SignInSchema = z.object({
   }),
   password: z.string().min(1, { message: "Password is required!" }),
 });
+
+export const CreateTaskSchema = z.object({
+  title: z
+    .string()
+    .min(4, { message: "Title is minimum 4 characters!" })
+    .max(20, { message: "Title is maximum 20 characters!" }),
+  description: z
+    .string()
+    .min(10, { message: "Description is minimum 10 characters!" })
+    .max(100, { message: "Description is maximum 100 characters!" }),
+});
