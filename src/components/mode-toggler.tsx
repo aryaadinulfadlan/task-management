@@ -21,19 +21,19 @@ export function ModeToggler() {
         side="bottom"
       >
         <div
-          className="hover:bg-accent p-2 text-sm lg:text-base"
+          className="hover:bg-accent p-2 text-sm lg:text-base cursor-pointer"
           onClick={() => setTheme("light")}
         >
           Light
         </div>
         <div
-          className="hover:bg-accent p-2 text-sm lg:text-base"
+          className="hover:bg-accent p-2 text-sm lg:text-base cursor-pointer"
           onClick={() => setTheme("dark")}
         >
           Dark
         </div>
         <div
-          className="hover:bg-accent p-2 text-sm lg:text-base"
+          className="hover:bg-accent p-2 text-sm lg:text-base cursor-pointer"
           onClick={() => setTheme("system")}
         >
           System

@@ -3,13 +3,13 @@ import Header from "./components/header";
 import { ThemeProvider } from "./components/theme-provider";
 import LandingPage from "./pages/public/landing";
 import HomePage from "./pages/protected/home";
-import ProtectedRoute from "./components/protected-route";
-import PublicRoute from "./components/public-route";
 import LoginPage from "./pages/public/login";
 import RegisterPage from "./pages/public/register";
 import NotFoundPage from "./pages/not-found";
-import ProtectedLayout from "./components/protected-layout";
-import TodosPage from "./pages/protected/todos";
+import TasksPage from "./pages/protected/tasks";
+import ProtectedRoute from "./components/auth/protected-route";
+import ProtectedLayout from "./components/auth/protected-layout";
+import PublicRoute from "./components/auth/public-route";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route element={<ProtectedLayout />}>
             <Route path="/home" element={<HomePage />} />
-            <Route path="/todos" element={<TodosPage />} />
+            <Route path="/tasks" element={<TasksPage />} />
           </Route>
         </Route>
         <Route element={<PublicRoute />}>
