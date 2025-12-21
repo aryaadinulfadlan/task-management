@@ -63,7 +63,7 @@ export default function TasksPage() {
   }
   return (
     <div className="p-4 lg:p-8 text-sm lg:text-base h-full">
-      <div className="max-w-170 mx-auto grid gap-6 md:gap-10 bg-accent dark:bg-card p-4 rounded-sm grid-rows-[auto_1fr] h-full">
+      <div className="max-w-110 lg:max-w-150 mx-auto grid gap-6 md:gap-10 bg-accent dark:bg-card p-4 rounded-sm grid-rows-[auto_1fr] h-full">
         <div className="flex items-center justify-between">
           <p className="font-semibold text-base lg:text-xl">Task List</p>
           <Dialog open={isOpen} onOpenChange={handleOpen}>
@@ -166,19 +166,17 @@ export default function TasksPage() {
             </DialogContent>
           </Dialog>
         </div>
-        <div>
-          {!pendingTask.length ? (
-            <div className="h-full flex items-center justify-center text-base lg:text-lg font-semibold">
-              No Pending Task Available
-            </div>
-          ) : (
-            <div className="overflow-y-auto grid gap-3 content-start">
-              {pendingTask.map((el) => (
-                <TaskCard key={el.task_id} task={el} />
-              ))}
-            </div>
-          )}
-        </div>
+        {!pendingTask.length ? (
+          <div className="h-full flex items-center justify-center text-base lg:text-lg font-semibold">
+            No Pending Task Available
+          </div>
+        ) : (
+          <div className="grid gap-3 content-start overflow-y-auto no-scrollbar">
+            {pendingTask.map((el) => (
+              <TaskCard key={el.task_id} task={el} isShowAction={true} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

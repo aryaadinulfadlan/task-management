@@ -5,7 +5,7 @@ export const SignUpSchema = z
     name: z
       .string()
       .min(6, { message: "Minimum 6 characters!" })
-      .max(30, { message: "Maximum 30 characters!" }),
+      .max(20, { message: "Maximum 20 characters!" }),
     email: z.email({
       message: "Email is not valid!",
     }),
