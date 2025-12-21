@@ -102,8 +102,8 @@ export const useTaskData = create<TaskData>()(
         set((state) => ({
           ...state,
           tasks: [
-            ...state.tasks,
             { task_id, title, description, is_completed: false },
+            ...state.tasks,
           ],
         })),
       completeTask: (task_id: string) =>
